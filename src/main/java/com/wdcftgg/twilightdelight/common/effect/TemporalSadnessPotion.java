@@ -2,14 +2,13 @@ package com.wdcftgg.twilightdelight.common.effect;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.MobEffects;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumParticleTypes;
 
-public class TemporalSadnessPotion extends Potion {
+public class TemporalSadnessPotion extends TwilightDelightPotion {
 
     public TemporalSadnessPotion() {
-        super(true, 0xFFFFFF);
+        super(true, 0xFFFFFF, "temporal_sadness");
     }
 
     @Override
@@ -27,10 +26,5 @@ public class TemporalSadnessPotion extends Potion {
     @Override
     public boolean isReady(int duration, int amplifier) {
         return true;
-    }
-
-    @Override
-    public boolean hasStatusIcon() {
-        return false;
     }
 }

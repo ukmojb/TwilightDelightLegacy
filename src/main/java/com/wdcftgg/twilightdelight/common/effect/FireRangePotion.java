@@ -4,13 +4,12 @@ import com.wdcftgg.twilightdelight.common.registry.TwilightDelightPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
-public class FireRangePotion extends Potion {
+public class FireRangePotion extends TwilightDelightPotion {
 
     public FireRangePotion() {
-        super(false, 0xFF6600);
+        super(false, 0xFF6600, "fire_range");
         this.setBeneficial();
     }
 
@@ -35,10 +34,5 @@ public class FireRangePotion extends Potion {
     @Override
     public boolean isReady(int duration, int amplifier) {
         return true;
-    }
-
-    @Override
-    public boolean hasStatusIcon() {
-        return false;
     }
 }

@@ -3,14 +3,13 @@ package com.wdcftgg.twilightdelight.common.effect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import twilightforest.potions.TFPotions;
 
-public class FrozenRangePotion extends Potion {
+public class FrozenRangePotion extends TwilightDelightPotion {
 
     public FrozenRangePotion() {
-        super(false, 0x00CCEC);
+        super(false, 0x00CCEC, "frozen_range");
         this.setBeneficial();
     }
 
@@ -29,10 +28,5 @@ public class FrozenRangePotion extends Potion {
     @Override
     public boolean isReady(int duration, int amplifier) {
         return true;
-    }
-
-    @Override
-    public boolean hasStatusIcon() {
-        return false;
     }
 }

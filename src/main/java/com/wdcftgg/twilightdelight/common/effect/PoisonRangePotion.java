@@ -4,13 +4,12 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 
-public class PoisonRangePotion extends Potion {
+public class PoisonRangePotion extends TwilightDelightPotion {
 
     public PoisonRangePotion() {
-        super(false, 0x007700);
+        super(false, 0x007700, "poison_range");
         this.setBeneficial();
     }
 
@@ -29,10 +28,5 @@ public class PoisonRangePotion extends Potion {
     @Override
     public boolean isReady(int duration, int amplifier) {
         return true;
-    }
-
-    @Override
-    public boolean hasStatusIcon() {
-        return false;
     }
 }
