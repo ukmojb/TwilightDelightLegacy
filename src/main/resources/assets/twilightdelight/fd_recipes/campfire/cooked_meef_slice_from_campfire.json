@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": [
+    {
+      "item": "twilightdelight:raw_meef_slice"
+    }
+  ],
+  "result": {
+    "item": "twilightdelight:cooked_meef_slice",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 300
+}

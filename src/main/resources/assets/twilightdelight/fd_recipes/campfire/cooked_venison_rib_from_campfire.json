@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "ingredient": [
+    {
+      "item": "twilightdelight:raw_venison_rib"
+    }
+  ],
+  "result": {
+    "item": "twilightdelight:cooked_venison_rib",
+    "count": 1
+  },
+  "experience": 1.0,
+  "cookingtime": 600
+}
