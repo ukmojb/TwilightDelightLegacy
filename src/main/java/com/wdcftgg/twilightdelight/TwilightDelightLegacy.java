@@ -10,8 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import twilightforest.block.TFBlocks;
 import org.apache.logging.log4j.Logger;
 
 @Mod(
@@ -49,7 +48,7 @@ public class TwilightDelightLegacy {
         HeatSourceApi.registerDirectHeatSourcePredicate("twilightdelight:maze_stove",
                 (world, pos, state) -> state.getBlock() == TwilightDelightBlocks.MAZE_STOVE);
         HeatSourceApi.registerDirectHeatSourcePredicate("twilightdelight:twilightforest_fiery_block",
-                (world, pos, state) -> ForgeRegistries.BLOCKS.getKey(state.getBlock()) != null
-                        && ForgeRegistries.BLOCKS.getKey(state.getBlock()).equals(new ResourceLocation("twilightforest", "fiery_block")));
+                (world, pos, state) -> state.getBlock() == TFBlocks.block_storage
+                        && state.getBlock().getMetaFromState(state) == 1);
     }
 }
