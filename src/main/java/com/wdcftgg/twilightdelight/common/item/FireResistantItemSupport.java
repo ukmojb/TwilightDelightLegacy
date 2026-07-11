@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
@@ -23,7 +24,7 @@ public interface FireResistantItemSupport {
         entityItem.motionZ = location.motionZ;
         if (location instanceof EntityItem) {
             EntityItem originalItem = (EntityItem) location;
-            entityItem.setPickupDelay(originalItem.cannotPickup() ? 32767 : 0);
+            entityItem.setPickupDelay(originalItem.writeToNBT(new NBTTagCompound()).getShort("PickupDelay"));
             entityItem.setOwner(originalItem.getOwner());
             entityItem.setThrower(originalItem.getThrower());
         }
