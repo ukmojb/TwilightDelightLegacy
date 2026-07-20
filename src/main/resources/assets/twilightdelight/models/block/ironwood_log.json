@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "twilightdelight:blocks/ironwood_log_top",
+    "side": "twilightdelight:blocks/ironwood_log"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent":  "block/cube_bottom_top",
+    "textures":  {
+                     "bottom":  "twilightdelight:blocks/crate_bottom",
+                     "side":  "twilightdelight:blocks/torchberries_crate_side",
+                     "top":  "twilightdelight:blocks/torchberries_crate_top"
+                 }
+}

@@ -2,8 +2,10 @@ package com.wdcftgg.twilightdelight.common.item;
 
 import com.wdcftgg.farmersdelightlegacy.api.knife.ItemKnifeBase;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Enchantments;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -25,9 +27,19 @@ public class FieryKnifeItem extends ItemKnifeBase implements FireResistantItemSu
 
     @Override
     public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-        stack.damageItem(2, attacker);
-        target.setFire(15);
-        return true;
+        boolean result = super.hitEntity(stack, target, attacker);
+        if (result) {
+            target.setFire(15);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        if (enchantment == Enchantments.FIRE_ASPECT) {
+            return false;
+        }
+        return enchantment == Enchantments.FORTUNE || super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override

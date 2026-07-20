@@ -3,6 +3,7 @@ package com.wdcftgg.twilightdelight.common.registry;
 import com.wdcftgg.twilightdelight.TwilightDelightLegacy;
 import com.wdcftgg.twilightdelight.common.effect.FireRangePotion;
 import com.wdcftgg.twilightdelight.common.effect.FrozenRangePotion;
+import com.wdcftgg.twilightdelight.common.effect.AuroraGlowingPotion;
 import com.wdcftgg.twilightdelight.common.effect.PoisonRangePotion;
 import com.wdcftgg.twilightdelight.common.effect.TemporalSadnessPotion;
 import net.minecraft.potion.Potion;
@@ -20,6 +21,7 @@ public final class TwilightDelightPotions {
     public static final Potion POISON_RANGE = register("poison_range", new PoisonRangePotion());
     public static final Potion FROZEN_RANGE = register("frozen_range", new FrozenRangePotion());
     public static final Potion TEMPORAL_SADNESS = register("temporal_sadness", new TemporalSadnessPotion());
+    public static final Potion AURORA_GLOWING = register("aurora_glowing", new AuroraGlowingPotion());
 
     private TwilightDelightPotions() {
     }

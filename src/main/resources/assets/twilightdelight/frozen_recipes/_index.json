@@ -1,0 +1,9 @@
+{
+  "recipes": [
+    "magma_to_obsidian",
+    "ice_to_packed_ice",
+    "diamond_sword_to_ice_sword",
+    "bow_to_ice_bow",
+    "blue_ice_to_ice_bomb"
+  ]
+}

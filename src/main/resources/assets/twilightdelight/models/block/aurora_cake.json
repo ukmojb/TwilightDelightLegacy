@@ -1,0 +1,10 @@
+{
+  "parent": "twilightdelight:block/historical_cake",
+  "textures": {
+    "bottom": "twilightdelight:blocks/aurora_cake_bottom",
+    "inside": "twilightdelight:blocks/aurora_cake_inner",
+    "particle": "twilightdelight:blocks/aurora_cake_side",
+    "side": "twilightdelight:blocks/aurora_cake_side",
+    "top": "twilightdelight:blocks/aurora_cake_top"
+  }
+}

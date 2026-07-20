@@ -1,0 +1,10 @@
+{
+    "parent":  "twilightdelight:block/pie_slice1",
+    "textures":  {
+                     "bottom":  "twilightdelight:blocks/pie_bottom",
+                     "inner":  "twilightdelight:blocks/torchberry_pie_inner",
+                     "particle":  "twilightdelight:blocks/torchberry_pie_top",
+                     "side":  "twilightdelight:blocks/pie_side",
+                     "top":  "twilightdelight:blocks/torchberry_pie_top"
+                 }
+}

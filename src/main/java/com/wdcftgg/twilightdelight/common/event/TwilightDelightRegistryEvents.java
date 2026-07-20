@@ -3,6 +3,7 @@ package com.wdcftgg.twilightdelight.common.event;
 import com.wdcftgg.twilightdelight.TwilightDelightLegacy;
 import com.wdcftgg.twilightdelight.common.registry.TwilightDelightBlocks;
 import com.wdcftgg.twilightdelight.common.registry.TwilightDelightItems;
+import com.wdcftgg.twilightdelight.common.registry.TwilightDelightHistoricalFoodRecipes;
 import com.wdcftgg.twilightdelight.common.registry.TwilightDelightPotions;
 import com.wdcftgg.twilightdelight.common.registry.TwilightDelightRecipes;
 import net.minecraft.block.Block;
@@ -34,6 +35,7 @@ public final class TwilightDelightRegistryEvents {
     @SubscribeEvent
     public static void onRegisterRecipes(RegistryEvent.Register<IRecipe> event) {
         TwilightDelightRecipes.registerForgeRecipes(event);
+        TwilightDelightHistoricalFoodRecipes.registerAll(event);
     }
 
     @SubscribeEvent

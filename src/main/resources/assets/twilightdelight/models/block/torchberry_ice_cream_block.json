@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "twilightdelight:blocks/torchberry_ice_cream_block"
+  }
+}

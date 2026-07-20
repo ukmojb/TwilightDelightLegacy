@@ -1,0 +1,7 @@
+{
+    "parent":  "item/generated",
+    "textures":  {
+                     "layer0":  "twilightdelight:blocks/mushgloom_colony_stage3",
+                     "layer1":  "twilightdelight:blocks/mushgloom_colony_stage3_head"
+                 }
+}

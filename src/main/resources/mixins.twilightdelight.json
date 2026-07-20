@@ -1,0 +1,21 @@
+{
+  "package": "com.wdcftgg.twilightdelight.mixin",
+  "required": true,
+  "refmap": "${mixin_refmap}",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8.5",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "CuttingBoardTileEntityMixin",
+    "RichSoilBlockMixin",
+    "SkilletTileEntityMixin"
+  ],
+  "client": [
+    "CuttingBoardRendererMixin",
+    "EntityAuroraMixin",
+    "RenderAuroraMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

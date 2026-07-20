@@ -1,10 +1,9 @@
 package com.wdcftgg.twilightdelight.common.effect;
 
-import com.wdcftgg.twilightdelight.common.registry.TwilightDelightPotions;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.potion.PotionEffect;
+import net.minecraft.entity.monster.IMob;
+import net.minecraft.util.EnumParticleTypes;
 
 public class FireRangePotion extends TwilightDelightPotion {
 
@@ -15,18 +14,14 @@ public class FireRangePotion extends TwilightDelightPotion {
 
     @Override
     public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        for (Entity entity : RangeEffectHelper.getEntitiesInRange(6.0D, entityLivingBase)) {
-            int fireSeconds = 5;
-            if (entity instanceof EntityLivingBase) {
-                EntityLivingBase target = (EntityLivingBase) entity;
-                PotionEffect activeEffect = target.getActivePotionEffect(TwilightDelightPotions.FIRE_RANGE);
-                fireSeconds = activeEffect == null ? 5 : activeEffect.getAmplifier() + 1;
-            }
-
-            entity.setFire(fireSeconds);
-            entityLivingBase.extinguish();
-            if (entity instanceof EntityItem) {
-                entity.extinguish();
+        entityLivingBase.extinguish();
+        RangeEffectHelper.spawnRingParticles(entityLivingBase, EnumParticleTypes.FLAME);
+        if (entityLivingBase.world.isRemote || entityLivingBase.ticksExisted % 10 != 0) {
+            return;
+        }
+        for (Entity entity : RangeEffectHelper.getEntitiesInRange(entityLivingBase)) {
+            if (entity instanceof EntityLivingBase && entity instanceof IMob) {
+                entity.setFire(amplifier + 2);
             }
         }
     }

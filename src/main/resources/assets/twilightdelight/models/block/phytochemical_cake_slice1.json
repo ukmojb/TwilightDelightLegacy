@@ -1,0 +1,10 @@
+{
+  "parent": "twilightdelight:block/historical_cake_slice1",
+  "textures": {
+    "bottom": "twilightdelight:blocks/phytochemical_cake_bottom",
+    "inside": "twilightdelight:blocks/phytochemical_cake_inner",
+    "particle": "twilightdelight:blocks/phytochemical_cake_side",
+    "side": "twilightdelight:blocks/phytochemical_cake_side",
+    "top": "twilightdelight:blocks/phytochemical_cake_top"
+  }
+}

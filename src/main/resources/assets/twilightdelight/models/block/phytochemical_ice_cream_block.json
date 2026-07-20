@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "twilightdelight:blocks/phytochemical_ice_cream_block"
+  }
+}

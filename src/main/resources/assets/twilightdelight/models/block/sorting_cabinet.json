@@ -1,0 +1,8 @@
+{
+    "parent":  "block/orientable",
+    "textures":  {
+                     "front":  "twilightdelight:blocks/sorting_cabinet_front",
+                     "side":  "twilightdelight:blocks/sorting_cabinet_side",
+                     "top":  "twilightdelight:blocks/sorting_cabinet_top"
+                 }
+}

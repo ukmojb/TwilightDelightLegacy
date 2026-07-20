@@ -1,0 +1,8 @@
+{
+    "parent":  "block/orientable",
+    "textures":  {
+                     "front":  "twilightdelight:blocks/time_cabinet_front",
+                     "side":  "twilightdelight:blocks/time_cabinet_side",
+                     "top":  "twilightdelight:blocks/time_cabinet_top"
+                 }
+}

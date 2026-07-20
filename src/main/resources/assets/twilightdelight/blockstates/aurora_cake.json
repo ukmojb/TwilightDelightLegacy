@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "bites=0": { "model": "twilightdelight:aurora_cake" },
+    "bites=1": { "model": "twilightdelight:aurora_cake_slice1" },
+    "bites=2": { "model": "twilightdelight:aurora_cake_slice2" },
+    "bites=3": { "model": "twilightdelight:aurora_cake_slice3" }
+  }
+}

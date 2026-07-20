@@ -138,9 +138,7 @@ dependencies {
         annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
         annotationProcessor 'com.google.guava:guava:32.1.2-jre'
         annotationProcessor 'com.google.code.gson:gson:2.8.9'
-        annotationProcessor (mixin) {
-            transitive = false
-        }
+        annotationProcessor mixin
     }
     if (propertyBool('enable_junit_testing')) {
         testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
@@ -206,6 +204,11 @@ processResources {
 jar {
     manifest {
         def attribute_map = [:]
+        if (propertyBool('use_mixins')) {
+            attribute_map['MixinConfigs'] = propertyStringList('mixin_configs')
+                    .collect(config -> "mixins.${config}.json")
+                    .join(',')
+        }
         if (propertyBool('is_coremod')) {
             attribute_map['FMLCorePlugin'] = propertyString('coremod_plugin_class_name')
             if (propertyBool('coremod_includes_mod')) {

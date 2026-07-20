@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "twilightdelight:ironwood_log",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "twilightdelight:ironwood_log"
+    },
+    "axis=z": {
+      "model": "twilightdelight:ironwood_log",
+      "x": 90
+    }
+  }
+}

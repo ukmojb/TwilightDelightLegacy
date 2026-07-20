@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "bites=0": { "model": "twilightdelight:phytochemical_cake" },
+    "bites=1": { "model": "twilightdelight:phytochemical_cake_slice1" },
+    "bites=2": { "model": "twilightdelight:phytochemical_cake_slice2" },
+    "bites=3": { "model": "twilightdelight:phytochemical_cake_slice3" }
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "parent":  "block/orientable",
+    "textures":  {
+                     "front":  "twilightdelight:blocks/canopy_cabinet_open",
+                     "side":  "twilightdelight:blocks/canopy_cabinet_side",
+                     "top":  "twilightdelight:blocks/canopy_cabinet_top"
+                 }
+}

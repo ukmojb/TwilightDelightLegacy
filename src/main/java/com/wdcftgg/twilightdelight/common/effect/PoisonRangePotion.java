@@ -2,9 +2,10 @@ package com.wdcftgg.twilightdelight.common.effect;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.monster.IMob;
 import net.minecraft.init.MobEffects;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.EnumParticleTypes;
 
 public class PoisonRangePotion extends TwilightDelightPotion {
 
@@ -15,12 +16,14 @@ public class PoisonRangePotion extends TwilightDelightPotion {
 
     @Override
     public void performEffect(EntityLivingBase entityLivingBase, int amplifier) {
-        if (entityLivingBase.world.isRemote) {
+        entityLivingBase.removePotionEffect(MobEffects.POISON);
+        RangeEffectHelper.spawnRingParticles(entityLivingBase, EnumParticleTypes.VILLAGER_HAPPY);
+        if (entityLivingBase.world.isRemote || entityLivingBase.ticksExisted % 10 != 0) {
             return;
         }
-        for (Entity entity : RangeEffectHelper.getEntitiesInRange(6.0D, entityLivingBase)) {
-            if (entity instanceof EntityLivingBase && !(entity instanceof EntityPlayer)) {
-                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 20, 5));
+        for (Entity entity : RangeEffectHelper.getEntitiesInRange(entityLivingBase)) {
+            if (entity instanceof EntityLivingBase && entity instanceof IMob) {
+                ((EntityLivingBase) entity).addPotionEffect(new PotionEffect(MobEffects.POISON, 26));
             }
         }
     }

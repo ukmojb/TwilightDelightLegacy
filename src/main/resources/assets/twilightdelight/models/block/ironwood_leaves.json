@@ -1,0 +1,6 @@
+{
+  "parent": "block/leaves",
+  "textures": {
+    "all": "twilightdelight:blocks/ironwood_leaves"
+  }
+}
