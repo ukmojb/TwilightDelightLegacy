@@ -2,7 +2,7 @@ package com.wdcftgg.twilightdelight.common.event;
 
 import com.wdcftgg.farmersdelightlegacy.common.block.BlockStove;
 import com.wdcftgg.farmersdelightlegacy.common.recipe.CookingPotRecipe;
-import com.wdcftgg.farmersdelightlegacy.common.recipe.CookingPotRecipeManager;
+import com.wdcftgg.farmersdelightlegacy.common.recipe.manager.CookingPotRecipeManager;
 import com.wdcftgg.farmersdelightlegacy.common.tile.TileEntityCookingPot;
 import com.wdcftgg.twilightdelight.TwilightDelightLegacy;
 import com.wdcftgg.twilightdelight.common.registry.TwilightDelightBlocks;

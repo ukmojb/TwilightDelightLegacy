@@ -42,7 +42,7 @@ dependencies {
     // 'group:name:version:classifier' where classifier is optional
 
     implementation rfg.deobf('curse.maven:The Twilight Forest-227639:3051450')
-    implementation rfg.deobf('curse.maven:FarmersDelightLegacy-1517486:8126474')
+    implementation rfg.deobf('curse.maven:FarmersDelightLegacy-1517486:8478602')
 
     // Example - Deobfuscating dependencies:
     implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
