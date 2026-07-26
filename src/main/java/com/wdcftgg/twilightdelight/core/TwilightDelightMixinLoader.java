@@ -3,7 +3,7 @@ package com.wdcftgg.twilightdelight.core;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import zone.rong.mixinbooter.IEarlyMixinLoader;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +14,10 @@ public final class TwilightDelightMixinLoader implements IFMLLoadingPlugin, IEar
 
     @Override
     public List<String> getMixinConfigs() {
-        return Collections.singletonList("mixins.twilightdelight.json");
+        return Arrays.asList(
+                "mixins.twilightdelight.json",
+                "mixins.twilightdelight.twilightforest.json"
+        );
     }
 
     @Override

@@ -1,0 +1,19 @@
+{
+  "package": "com.wdcftgg.twilightdelight.mixin",
+  "required": true,
+  "refmap": "mixins.twilightdelight.refmap.json",
+  "target": "@env(DEFAULT)",
+  "minVersion": "0.8.5",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "AlphaYetiTrophyBlockMixin",
+    "AlphaYetiTrophyItemMixin"
+  ],
+  "client": [
+    "AlphaYetiTrophyItemClientMixin",
+    "AlphaYetiTrophyRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

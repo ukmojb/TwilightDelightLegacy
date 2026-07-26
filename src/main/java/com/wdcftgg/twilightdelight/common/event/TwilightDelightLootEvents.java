@@ -8,9 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import twilightforest.entity.boss.EntityTFYetiAlpha;
 import twilightforest.entity.boss.EntityTFUrGhast;
 import twilightforest.entity.boss.EntityTFMinoshroom;
 import twilightforest.entity.EntityTFMinotaur;
+import twilightforest.enums.BossVariant;
 import twilightforest.item.TFItems;
 import com.wdcftgg.twilightdelight.common.registry.TwilightDelightItems;
 
@@ -22,6 +24,10 @@ public final class TwilightDelightLootEvents {
 
     @SubscribeEvent
     public static void onLivingDrops(LivingDropsEvent event) {
+        if (event.getEntityLiving() instanceof EntityTFYetiAlpha) {
+            addDrop(event, new ItemStack(TFItems.trophy, 1, BossVariant.ALPHA_YETI.ordinal()));
+        }
+
         if (event.getEntityLiving() instanceof EntityTFUrGhast) {
             int count = 2 + event.getEntityLiving().getRNG().nextInt(7);
             addDrop(event, new ItemStack(TFItems.experiment_115, count));
