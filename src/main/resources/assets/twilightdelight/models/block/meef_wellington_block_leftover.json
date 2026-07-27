@@ -2,9 +2,9 @@
     "credit":  "Made with Blockbench",
     "parent":  "block/block",
     "textures":  {
-                     "particle":  "farmersdelight:blocks/tray_bottom",
+                     "particle":  "twilightdelight:blocks/tray_bottom",
                      "tray_top":  "twilightdelight:blocks/meef_wellington_block_tray",
-                     "tray_side":  "farmersdelight:blocks/tray_bottom"
+                     "tray_side":  "twilightdelight:blocks/tray_bottom"
                  },
     "elements":  [
                  {

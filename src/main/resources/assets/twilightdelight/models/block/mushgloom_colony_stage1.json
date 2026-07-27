@@ -1,5 +1,5 @@
 {
-    "parent":  "twilightforest:util/cross_2_layer",
+    "parent":  "twilightforest:block/util/cross_2_layer",
     "textures":  {
                      "cross":  "twilightdelight:blocks/mushgloom_colony_stage1",
                      "cross2":  "twilightdelight:blocks/mushgloom_colony_stage1_head"

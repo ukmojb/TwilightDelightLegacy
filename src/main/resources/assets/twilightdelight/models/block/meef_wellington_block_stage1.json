@@ -5,7 +5,7 @@
                      "particle":  "twilightdelight:blocks/meef_wellington_block_body",
                      "ham":  "twilightdelight:blocks/meef_wellington_block_body",
                      "tray_top":  "twilightdelight:blocks/meef_wellington_block_tray",
-                     "tray_side":  "farmersdelight:blocks/tray_bottom"
+                     "tray_side":  "twilightdelight:blocks/tray_bottom"
                  },
     "elements":  [
                      {
