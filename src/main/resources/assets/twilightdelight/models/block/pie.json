@@ -3,7 +3,8 @@
     "textures":  {
 
                  },
-    "elements":  {
+    "elements":  [
+                 {
                      "from":  [
                                   2,
                                   0,
@@ -71,7 +72,8 @@
                                                 "cullface":  "down"
                                             }
                                }
-                 },
+                 }
+             ],
     "display":  {
 
                 }
