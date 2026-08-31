@@ -40,9 +40,17 @@ public final class TwilightDelightOreDictionary {
         register("logWood", TwilightDelightBlocks.IRONWOOD_LOG);
         register("treeLeaves", TwilightDelightBlocks.IRONWOOD_LEAVES);
         register("toolKnife", TwilightDelightItems.FIERY_KNIFE);
+        register("toolFieryKnife", TwilightDelightItems.FIERY_KNIFE);
         register("toolKnife", TwilightDelightItems.IRONWOOD_KNIFE);
         register("toolKnife", TwilightDelightItems.STEELEAF_KNIFE);
         register("toolKnife", TwilightDelightItems.KNIGHTMETAL_KNIFE);
+        if (TwilightDelightItems.hasNetherDelightMachetes()) {
+            register("toolKnife", TwilightDelightItems.FIERY_MACHETE);
+            register("toolFieryKnife", TwilightDelightItems.FIERY_MACHETE);
+            register("toolKnife", TwilightDelightItems.IRONWOOD_MACHETE);
+            register("toolKnife", TwilightDelightItems.STEELEAF_MACHETE);
+            register("toolKnife", TwilightDelightItems.KNIGHTMETAL_MACHETE);
+        }
         register("toolAxe", TFItems.ironwood_axe);
         register("toolAxe", TFItems.steeleaf_axe);
         register("toolAxe", TFItems.knightmetal_axe);

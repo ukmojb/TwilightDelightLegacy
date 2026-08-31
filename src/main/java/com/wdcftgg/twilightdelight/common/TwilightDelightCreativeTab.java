@@ -43,9 +43,13 @@ public final class TwilightDelightCreativeTab {
             addBlock(items, TwilightDelightBlocks.GLACIER_ICE_CREAM_BLOCK);
 
             addItem(items, TwilightDelightItems.IRONWOOD_KNIFE);
+            addItem(items, TwilightDelightItems.IRONWOOD_MACHETE);
             addItem(items, TwilightDelightItems.STEELEAF_KNIFE);
+            addItem(items, TwilightDelightItems.STEELEAF_MACHETE);
             addItem(items, TwilightDelightItems.KNIGHTMETAL_KNIFE);
+            addItem(items, TwilightDelightItems.KNIGHTMETAL_MACHETE);
             addItem(items, TwilightDelightItems.FIERY_KNIFE);
+            addItem(items, TwilightDelightItems.FIERY_MACHETE);
             addItem(items, TwilightDelightItems.TEARDROP_SWORD);
 
             addItem(items, TwilightDelightItems.HYDRA_PIECE);

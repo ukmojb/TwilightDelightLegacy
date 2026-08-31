@@ -147,7 +147,7 @@ public final class FrozenRecipeManager {
                      Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
                     register(parseRecipe(recipeResource, new JsonParser().parse(reader).getAsJsonObject()));
                 } catch (SkippedRecipeException ignored) {
-                    // Optional input mod is absent.
+                    LOGGER.debug("Skipping frozen recipe {}: {}", recipeResource, ignored.getMessage());
                 } catch (RuntimeException | IOException exception) {
                     LOGGER.error("Failed to load frozen recipe {} from {}", recipeResource, resource, exception);
                 }
@@ -161,11 +161,34 @@ public final class FrozenRecipeManager {
         if (json.has("required_mod") && !Loader.isModLoaded(json.get("required_mod").getAsString())) {
             throw new SkippedRecipeException("Required mod is not loaded");
         }
-        if (!json.has("input") || !json.has("result")) {
+        if ((!json.has("input") && !json.has("inputs")) || !json.has("result")) {
             throw new IllegalArgumentException("Frozen recipe must define 'input' and 'result'");
         }
 
-        FrozenIngredient input = FrozenIngredient.fromJson(json.get("input"));
+        List<FrozenIngredient> inputs = new ArrayList<>();
+        if (json.has("inputs")) {
+            JsonElement inputsJson = json.get("inputs");
+            if (!inputsJson.isJsonArray()) {
+                throw new IllegalArgumentException("Frozen recipe 'inputs' must be an array");
+            }
+            for (JsonElement inputJson : inputsJson.getAsJsonArray()) {
+                FrozenIngredient input = FrozenIngredient.tryFromJson(inputJson);
+                if (input == null) {
+                    LOGGER.debug("Skipping unavailable input {} in frozen recipe {}", inputJson, resource);
+                } else {
+                    inputs.add(input);
+                }
+            }
+        } else {
+            FrozenIngredient input = FrozenIngredient.tryFromJson(json.get("input"));
+            if (input != null) {
+                inputs.add(input);
+            }
+        }
+        if (inputs.isEmpty()) {
+            throw new SkippedRecipeException("No registered input items");
+        }
+
         ItemStack result = parseResult(json.get("result"));
         String path = resource.getPath();
         int prefix = path.indexOf("frozen_recipes/");
@@ -175,7 +198,7 @@ public final class FrozenRecipeManager {
         if (path.endsWith(".json")) {
             path = path.substring(0, path.length() - ".json".length());
         }
-        return new FrozenRecipe(new ResourceLocation(resource.getNamespace(), path), input, result);
+        return new FrozenRecipe(new ResourceLocation(resource.getNamespace(), path), inputs, result);
     }
 
     private static ItemStack parseResult(JsonElement json) {

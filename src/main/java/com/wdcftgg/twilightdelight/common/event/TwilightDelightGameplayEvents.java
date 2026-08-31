@@ -101,7 +101,7 @@ public final class TwilightDelightGameplayEvents {
         }
         EntityLivingBase attacker = (EntityLivingBase) event.getSource().getTrueSource();
         EntityLivingBase target = event.getEntityLiving();
-        if (attacker.getHeldItemMainhand().getItem() != TwilightDelightItems.KNIGHTMETAL_KNIFE) {
+        if (!TwilightDelightItems.isKnightmetalBlade(attacker.getHeldItemMainhand().getItem())) {
             return;
         }
         int armor = target.getTotalArmorValue();

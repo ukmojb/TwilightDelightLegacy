@@ -23,7 +23,7 @@ public abstract class CuttingBoardTileEntityMixin extends TileEntity {
     @Inject(method = "processStoredItem", at = @At("RETURN"), cancellable = true, remap = false)
     private void twilightdelight$cookFieryKnifeResults(ItemStack toolStack,
                                                        CallbackInfoReturnable<List<ItemStack>> cir) {
-        if (toolStack.getItem() != TwilightDelightItems.FIERY_KNIFE || cir.getReturnValue().isEmpty()) {
+        if (!TwilightDelightItems.isFieryBlade(toolStack.getItem()) || cir.getReturnValue().isEmpty()) {
             return;
         }
         List<ItemStack> transformed = new ArrayList<>();

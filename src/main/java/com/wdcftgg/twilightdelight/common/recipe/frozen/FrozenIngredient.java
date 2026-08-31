@@ -42,6 +42,14 @@ public final class FrozenIngredient {
         return forItem(item, metadata);
     }
 
+    public static FrozenIngredient tryFromJson(JsonElement json) {
+        try {
+            return fromJson(json);
+        } catch (UnknownItemException ignored) {
+            return null;
+        }
+    }
+
     public static FrozenIngredient fromToken(String token) {
         if (token == null || token.trim().isEmpty()) {
             throw new IllegalArgumentException("Frozen ingredient token cannot be empty");
@@ -111,8 +119,14 @@ public final class FrozenIngredient {
         ResourceLocation id = new ResourceLocation(itemId);
         Item item = ForgeRegistries.ITEMS.getValue(id);
         if (item == null) {
-            throw new IllegalArgumentException("Unknown item '" + id + "'");
+            throw new UnknownItemException(id);
         }
         return item;
+    }
+
+    private static final class UnknownItemException extends IllegalArgumentException {
+        private UnknownItemException(ResourceLocation id) {
+            super("Unknown item '" + id + "'");
+        }
     }
 }

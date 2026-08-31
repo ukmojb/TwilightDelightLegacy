@@ -212,6 +212,9 @@ public final class TwilightDelightRecipes {
                 "S",
                 'K', TFItems.knightmetal_ingot,
                 'S', Items.STICK);
+        if (TwilightDelightItems.hasNetherDelightMachetes()) {
+            registerMacheteRecipes(event);
+        }
         registerShaped(event, "lily_chicken_block", stack(TwilightDelightBlocks.LILY_CHICKEN_BLOCK),
                 "L",
                 "C",
@@ -344,7 +347,7 @@ public final class TwilightDelightRecipes {
         CuttingBoardRecipeApi.registerRecipe(
                 recipeKey("cutting/fiery_minoshroom_trophy"),
                 new String[] {"twilightforest:trophy@6"},
-                new String[] {"twilightdelight:fiery_knife"},
+                new String[] {"ore:toolFieryKnife"},
                 new String[] {"twilightforest:cooked_meef", "minecraft:red_mushroom"},
                 new int[] {9, 8},
                 new float[] {1.0F, 0.5F});
@@ -404,8 +407,45 @@ public final class TwilightDelightRecipes {
     private static void registerKnifeCutting(String name, String inputToken, ItemStack outputStack, int count, float chance) {
         String normalOutputToken = itemToken(outputStack);
         String fieryOutputToken = itemToken(getFieryCuttingResult(outputStack));
-        CuttingBoardRecipeApi.registerRecipe(recipeKey("cutting/fiery_" + name), inputToken, "twilightdelight:fiery_knife", fieryOutputToken, count, chance);
+        CuttingBoardRecipeApi.registerRecipe(recipeKey("cutting/fiery_" + name), inputToken, "ore:toolFieryKnife", fieryOutputToken, count, chance);
         CuttingBoardRecipeApi.registerRecipe(recipeKey("cutting/" + name), inputToken, null, normalOutputToken, count, chance);
+    }
+
+    private static void registerMacheteRecipes(RegistryEvent.Register<IRecipe> event) {
+        registerShaped(event, "fiery_machete", stack(TwilightDelightItems.FIERY_MACHETE),
+                "  F",
+                " F ",
+                "B  ",
+                'F', TFItems.fiery_ingot,
+                'B', Items.BLAZE_ROD);
+        registerShaped(event, "ironwood_machete", enchantedStack(TwilightDelightItems.IRONWOOD_MACHETE,
+                        Enchantments.KNOCKBACK, 1, Enchantments.UNBREAKING, 1),
+                "  I",
+                " I ",
+                "S  ",
+                'I', "ingotIronwood",
+                'S', "stickWood");
+        registerShaped(event, "steeleaf_machete", enchantedStack(TwilightDelightItems.STEELEAF_MACHETE,
+                        Enchantments.LOOTING, 2, Enchantments.FORTUNE, 2),
+                "  L",
+                " L ",
+                "S  ",
+                'L', "ingotSteeleaf",
+                'S', "stickWood");
+        registerShaped(event, "knightmetal_machete", stack(TwilightDelightItems.KNIGHTMETAL_MACHETE),
+                "  K",
+                " K ",
+                "S  ",
+                'K', TFItems.knightmetal_ingot,
+                'S', Items.STICK);
+
+        Item ironMachete = item("nethers_delight_legacy:iron_machete");
+        if (ironMachete != Items.AIR) {
+            registerShapeless(event, "fiery_machete_from_iron_machete", stack(TwilightDelightItems.FIERY_MACHETE),
+                    ironMachete, TFItems.fiery_blood, Items.BLAZE_ROD);
+            registerShapeless(event, "fiery_machete_from_tears", stack(TwilightDelightItems.FIERY_MACHETE),
+                    ironMachete, TFItems.fiery_tears, Items.BLAZE_ROD);
+        }
     }
 
     private static ItemStack getFieryCuttingResult(ItemStack outputStack) {

@@ -1,5 +1,7 @@
 {
-  "required_mod": "futuremc",
-  "input": "futuremc:blue_ice",
+  "inputs": [
+    "futuremc:blue_ice",
+    "oe:blue_ice"
+  ],
   "result": "twilightforest:ice_bomb"
 }

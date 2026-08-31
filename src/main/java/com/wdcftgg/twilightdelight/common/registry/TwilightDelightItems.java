@@ -7,12 +7,15 @@ import com.wdcftgg.farmersdelightlegacy.common.item.ItemFoodTooltip;
 import com.wdcftgg.farmersdelightlegacy.common.registry.ModEffects;
 import com.wdcftgg.twilightdelight.TwilightDelightLegacy;
 import com.wdcftgg.twilightdelight.common.TwilightDelightCreativeTab;
+import com.wdcftgg.twilightdelight.common.item.FieryMacheteItem;
 import com.wdcftgg.twilightdelight.common.item.FieryKnifeItem;
 import com.wdcftgg.twilightdelight.common.item.FireResistantItemSupport;
+import com.wdcftgg.twilightdelight.common.item.KnightmetalMacheteItem;
 import com.wdcftgg.twilightdelight.common.item.KnightmetalKnifeItem;
 import com.wdcftgg.twilightdelight.common.item.TeardropSwordItem;
 import com.wdcftgg.twilightdelight.common.item.ThornRoseTeaItem;
 import com.wdcftgg.twilightdelight.common.item.TwilightFoodItem;
+import com.wdcftgg.twilightdelight.common.item.TwilightMacheteItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.MobEffects;
@@ -25,6 +28,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Loader;
 import twilightforest.item.TFItems;
 
 import java.util.LinkedHashMap;
@@ -32,6 +36,8 @@ import javax.annotation.Nullable;
 import java.util.Map;
 
 public final class TwilightDelightItems {
+
+    private static final String NETHERS_DELIGHT_LEGACY = "nethers_delight_legacy";
 
     public static final Map<String, Item> ITEMS = new LinkedHashMap<>();
 
@@ -248,15 +254,44 @@ public final class TwilightDelightItems {
     public static final Item STEELEAF_KNIFE = register("steeleaf_knife", new EnchantedKnifeItem(TFItems.TOOL_STEELEAF, 3.5D,
             enchantments(net.minecraft.init.Enchantments.LOOTING, 2, net.minecraft.init.Enchantments.FORTUNE, 2)));
     public static final Item KNIGHTMETAL_KNIFE = register("knightmetal_knife", new KnightmetalKnifeItem());
+    @Nullable public static Item FIERY_MACHETE;
+    @Nullable public static Item IRONWOOD_MACHETE;
+    @Nullable public static Item STEELEAF_MACHETE;
+    @Nullable public static Item KNIGHTMETAL_MACHETE;
     public static final Item TEARDROP_SWORD = register("teardrop_sword", new TeardropSwordItem());
 
     private TwilightDelightItems() {
     }
 
     public static void registerAll(RegistryEvent.Register<Item> event) {
+        registerNetherDelightMachetes();
         for (Item item : ITEMS.values()) {
             event.getRegistry().register(item);
         }
+    }
+
+    public static boolean hasNetherDelightMachetes() {
+        return FIERY_MACHETE != null;
+    }
+
+    public static boolean isFieryBlade(Item item) {
+        return item == FIERY_KNIFE || item == FIERY_MACHETE;
+    }
+
+    public static boolean isKnightmetalBlade(Item item) {
+        return item == KNIGHTMETAL_KNIFE || item == KNIGHTMETAL_MACHETE;
+    }
+
+    private static void registerNetherDelightMachetes() {
+        if (!Loader.isModLoaded(NETHERS_DELIGHT_LEGACY) || hasNetherDelightMachetes()) {
+            return;
+        }
+        FIERY_MACHETE = register("fiery_machete", new FieryMacheteItem());
+        IRONWOOD_MACHETE = register("ironwood_machete", new EnchantedMacheteItem(TFItems.TOOL_IRONWOOD,
+                enchantments(net.minecraft.init.Enchantments.KNOCKBACK, 1, net.minecraft.init.Enchantments.UNBREAKING, 1)));
+        STEELEAF_MACHETE = register("steeleaf_machete", new EnchantedMacheteItem(TFItems.TOOL_STEELEAF,
+                enchantments(net.minecraft.init.Enchantments.LOOTING, 2, net.minecraft.init.Enchantments.FORTUNE, 2)));
+        KNIGHTMETAL_MACHETE = register("knightmetal_machete", new KnightmetalMacheteItem());
     }
 
     private static Item registerFood(String path, FoodItemApi.FoodItemSettings.Builder builder) {
@@ -350,6 +385,24 @@ public final class TwilightDelightItems {
         public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
             return enchantment == net.minecraft.init.Enchantments.FORTUNE
                     || super.canApplyAtEnchantingTable(stack, enchantment);
+        }
+    }
+
+    public static class EnchantedMacheteItem extends TwilightMacheteItem {
+        private final Map<Enchantment, Integer> displayedEnchantments;
+
+        public EnchantedMacheteItem(Item.ToolMaterial material, Map<Enchantment, Integer> displayedEnchantments) {
+            super(material);
+            this.displayedEnchantments = displayedEnchantments;
+        }
+
+        @Override
+        public void getSubItems(net.minecraft.creativetab.CreativeTabs tab, NonNullList<ItemStack> items) {
+            if (this.isInCreativeTab(tab)) {
+                ItemStack itemStack = new ItemStack(this);
+                EnchantmentHelper.setEnchantments(this.displayedEnchantments, itemStack);
+                items.add(itemStack);
+            }
         }
     }
 }
